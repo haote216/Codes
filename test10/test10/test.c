@@ -43,7 +43,7 @@
 //	system("pause");
 //	return 0;
 //}
-#define NUM 8
+//#define NUM 8
 //version 1
 //int CountBits(unsigned int x_)
 //{
@@ -63,16 +63,16 @@
 //	return count_;
 //}
 //version 2 
-//unsigned int CountBits(unsigned int x_)
-//{
-//	int count_ = 0;
-//	while (x_)
-//	{
-//		x_ = x_ &(x_ - 1);
-//		count_++;
-//	}
-//	return count_;
-//} 
+unsigned int CountBits(unsigned int x_)
+{
+	int count_ = 0;
+	while (x_)
+	{
+		x_ = x_ &(x_ - 1);
+		count_++;
+	}
+	return count_;
+} 
 //int main()
 //{
 //	unsigned int data;
@@ -271,15 +271,22 @@
 //	}
 //	printf("%d\n", count);
 //}
-//int main()
-//{
-//	int m = 0;
-//	int n = 0;
-//	scanf("%d%d", &m, &n);
-//	difnum_int(m, n);
-//	system("pause");
-//	return 0;
-//}
+int difnum_int(unsigned int x, unsigned int y)
+{
+	unsigned int num = x^y;
+	return CountBits(num);
+}
+int main()
+{
+	int m = 0;
+	int n = 0;
+	printf("Please Enter:x,y\n");
+	scanf("%d%d", &m, &n);
+	
+	printf("%d", difnum_int(m, n));
+	system("pause");
+	return 0;
+}
  
 
 
