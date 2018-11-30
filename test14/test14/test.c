@@ -64,7 +64,7 @@
 //	strcat(p, a);
 //	strncpy(a, p + num_, sz);
 //	free(p);
-//	return a;//free写在return后面可以吗？
+//	return a;//free写在return后面可以吗？//free必须写在return前面
 //	
 //}
 //int main()
@@ -91,9 +91,9 @@ void ReverseString(char *start,char *end)
 		start++, end--;
 	}
 }
+//正确的
 int test(char *str1,char *str2,int sz)
-{
-	//char *p = str1;//如何给p加const   
+{   
 	for (int i = 0; i < sz;i++)
 	{
 		//解决思路:1.每次反转1次，循环i次，反转i次。   2.每次反转i次，循环1次指针指向最初的位置，i++;
@@ -105,12 +105,32 @@ int test(char *str1,char *str2,int sz)
 	}
 	return 0;	
 }
+
+//错误的
+//void test(const char *str1,const char *str2, int sz)
+//{
+//	//char *p = str1;  //如何给p加const
+//    const char *p = (char *)str1;
+//	for (int i = 0; i < sz; i++)
+//	{
+//		p = str1;
+//		//解决思路:1.每次反转1次，循环i次，反转i次。   2.每次反转i次，循环1次指针指向最初的位置，i++;
+//		ReverseString(p[0], p[i]);//str[0],str[0+i]不行？
+//		ReverseString(p+i+1, p + sz - 1);
+//		ReverseString(p, p + sz - 1);
+//		if ((strcmp(p, str2)) == 0)
+//			printf("1\n");
+//	}
+//	 printf("0\n");
+//}
 int main()
 {
-	char str1[] = "CDAAB";//
+	char str1[] = "CDAAD";//
 	char str2[] = "BCDAA";
+	//char *str1 = "CDAAB";
+	//char *str2 = "BCDAA";
 	int sz = strlen(str1);
-	printf("%d\n", test(str1, str2,sz));
+	printf("%d\n", test(str1, str2, sz));
 	system("pause");
 	return 0;
 }
