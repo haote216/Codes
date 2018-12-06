@@ -2,8 +2,24 @@
 #include<stdio.h>
 #include<windows.h>
 #include<string.h>
+//int fun()
+//{
+//	static count = 1;
+//	return ++count;
+//}
 int main()
 {
+	int n = 10;
+	char *pa = (char*)&n;
+	int  *pi = &n;
+	printf("%p\n", &n);
+	printf("%p\n", pa);
+	printf("%p\n", pa+1);
+	printf("%p\n", pi);
+	printf("%p\n", pi+1);
+	/*int ret = fun() - fun()*fun();
+	printf("%d\n", ret);*/
+
 	//char a = 127;   //00000000000000000000000001111111
 	//char b = 3;     //00000000000000000000000000000011
 	//char c = a + b; //00000000000000000000000010000010
@@ -13,11 +29,11 @@ int main()
 	//                  //10000000000000000000000001111110
 	
 	
-	char c = 1;
-	//00000001
-	printf("%d\n", sizeof(c));//1
-	printf("%d\n", sizeof(+c));//4
-	printf("%d\n", sizeof(!c));//4 为啥是1
+	//char c = 1;
+	////00000001
+	//printf("%d\n", sizeof(c));//1
+	//printf("%d\n", sizeof(+c));//4
+	//printf("%d\n", sizeof(!c));//4 为啥是1
 
 	/*char a = 0xb6;
 	short b = 0xb600;
