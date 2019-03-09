@@ -39,15 +39,8 @@ void StackPrintf(Stack* s)
 {
 	char a = 0;
 	a = StackTop(s);
-	//int b = 'a' - '0';
-	if (a >= 10)
-	{
-		printf("%c\n", ':'-a+10);
-	}
-	else
-	{
-		printf("%c\n", a);
-	}
+	int b = a - '0';
+	printf("%d\n", b);
 	
 	/*
 	for (int i = 0; i<s->_top; i++)

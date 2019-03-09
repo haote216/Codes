@@ -17,14 +17,7 @@ void fun(Stack* s,char arr[])
 			int j = StackTop(s) - '0';
 			StackPop(s);
 			int k = i + j;
-			if (k >= 10)
-			{
-				StackPush(s, k-10+ '0');
-			}
-			else
-			{
-				StackPush(s, k + '0');
-			}
+			StackPush(s, k + '0');
 			
 		}
 		if (arr[i] == '-')
@@ -43,14 +36,7 @@ void fun(Stack* s,char arr[])
 			int j = StackTop(s) - '0';
 			StackPop(s);
 			int k = i * j;
-			if (k >= 10)
-			{
-				StackPush(s, k - 10 + ':');
-			}
-			else
-			{
-				StackPush(s, k + ':');
-			}
+			StackPush(s, k + '0');
 		}
 		if (arr[i] == '/')
 		{
@@ -66,7 +52,7 @@ void fun(Stack* s,char arr[])
 void test()
 {
 	Stack s;
-	char arr[] = { '9', '2', '3', '+', '-', '5', '*', '2', '/' ,'\0'};
+	char arr[] = { '9', '2', '3', '+', '-', '6', '*', '2', '/' ,'\0'};
 	fun(&s, arr);
 	StackPrintf(&s);
 }
