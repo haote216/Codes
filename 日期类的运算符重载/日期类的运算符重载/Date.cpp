@@ -9,9 +9,9 @@ int Date::GetMonthDay(int year, int month)
 	}
 	return monthDay[month];
 }
-void Date::Print(const Date& d)
+void Date::Print()
 {
-	cout << d._year << "-" << d._month << "-" << d._day << endl;
+	cout << _year << "-" << _month << "-" << _day << endl;
 }
 
 Date::Date(int year, int month, int day)
@@ -88,58 +88,76 @@ bool Date::operator!=(const Date& d)
 //d1 + 100
 Date Date::operator+(int day)
 {
-	Date ret(*this);//用ret拷贝构造了d1
-	ret._day += day;
-	while (ret._day > GetMonthDay(ret._year, ret._month))
-	{
-		ret._day -= GetMonthDay(ret._year, ret._month);
-		ret._month++;
-		if (ret._month > 13)
-		{
-			ret._year += 1;
-			ret._month = 1;
-		}
-	}
+	//Date ret(*this);//用ret拷贝构造了d1
+	//ret._day += day;
+	//while (ret._day > GetMonthDay(ret._year, ret._month))
+	//{
+	//	ret._day -= GetMonthDay(ret._year, ret._month);
+	//	++ret._month;
+	//	if (ret._month == 13)
+	//	{
+	//		ret._year += 1;
+	//		ret._month = 1;
+	//	}
+	//}
+	//return ret;
+
+	Date ret(*this);
+	ret += day;
 	return ret;
 }
 Date& Date::operator+=(int day)
 {
+	if (day < 0)
+	{
+		return *this -= (-day);
+	}
 	this->_day += day;
 	while (this->_day > GetMonthDay(this->_year, this->_month))
 	{
 		this->_day -= GetMonthDay(this->_year, this->_month);
-		this->_month++;
-		if (this->_month > 13)
+		++this->_month;
+		if (this->_month == 13)
 		{
 			this->_year += 1;
 			this->_month = 1;
 		}
 	}
 	return *this;
+
+	/**this = *this + day;
+	return *this;*/
+
+
 }
 Date Date::operator-(int day)
 {
+	//Date ret = *this;
+	//ret._day -= day;   
+	//while (ret._day < 0)
+	//{
+	//	if (ret._month == 1)
+	//	{
+	//		ret._year -= 1;
+	//		ret._month = 12;
+	//	}
+	//	else
+	//	{
+	//		ret._month--;
+	//	}
+	//	ret._day += GetMonthDay(ret._year, ret._month);
+	//}
+	//return ret;
 	Date ret = *this;
-	ret._day -= day;   
-	while (ret._day < 0)
-	{
-		if (ret._month == 1)
-		{
-			ret._year -= 1;
-			ret._month = 12;
-		}
-		else
-		{
-			ret._month--;
-		}
-		ret._day += GetMonthDay(ret._year, ret._month);
-	}
+	*this -= day;
 	return ret;
 }
 Date& Date::operator-=(int day)
 {
+	if (day < 0)
+		return *this += (-day);
 	this->_day -= day;
-	while (this->_day < 0)
+	while (this->_day <= 0)
 	{
 		if (this->_month == 1)
 		{
@@ -173,25 +191,26 @@ int Date::operator-(const Date& d)
 	}
 	return count;
 }
-Date Date::operator++()  //后置++
+Date& Date::operator++()  //前置++
+{
+	*this += 1;
+	return *this;
+	
+}
+Date Date::operator++(int)  //后置++
 {
 	Date ret(*this);
 	*this += 1;
 	return ret;
 }
-Date Date::operator++(int)  //前置++
+Date& Date::operator--()  //前置--
 {
-	*this += 1;
+	*this -= 1;
 	return *this;
 }
-Date Date::operator--()  //后置--
+Date Date::operator--(int)  //后置--
 {
 	Date ret(*this);
 	*this -= 1;
 	return ret;
-}
-Date Date::operator--(int)  //前置--
-{
-	*this -= 1;
-	return *this;
 }
