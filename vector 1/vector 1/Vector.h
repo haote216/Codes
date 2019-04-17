@@ -10,7 +10,7 @@ namespace bit
 
 	public:
 		typedef T* iterator;
-		//typedef const T* const_iterator;
+		typedef const T* const_iterator;
 
 
 		//放在类里面，成为内联
@@ -24,12 +24,12 @@ namespace bit
 			return _finish;
 		}
 
-		const iterator cbegin()const
+		const_iterator cbegin()const
 		{
 			return _start;
 		}
 
-		const iterator cend()const 
+		const_iterator cend()const 
 		{
 			return _finish;
 		}
@@ -92,12 +92,38 @@ namespace bit
 				
 			}
 		}
-		void Resize(size_t n, const T& val = T());
+		void Resize(size_t n, const T& val = T())
+		{
+			if (n > Capacity())
+			{
+				Reserve(n);
+			}
+			else
+			{
+				if(n <= Size())
+				{
+				_finish = _start + n;
+				}
+				iterator begin = _finish;
+				while (begin < _start + n)
+				{
+					*begin = val;
+					++begin;
+				}
+				_finish = begin;
+			}
+
+		}
 		void PushBack(const T& x)
 		{
 			Insert(_finish, x);
 		}
-		void PopBack(const T& x);
+		void PopBack()
+		{
+			Erase(_finish - 1);
+		}
+
+
 		//Insert会引发迭代器失效问题，所以为了能够继续使用迭代器，使用偏移量计算出pos指向的位置，如果想*或者其他使用迭代器，
 		//  就得传参传引用，最后++pos，因为pos指的3的位置，插入后pos指的是插入数据的位置
 		void Insert(iterator pos, const T& x)
@@ -117,7 +143,7 @@ namespace bit
 				--end;
 			}
 			*pos = x;
-			//++pos;    //为什么？
+			//++pos;   
 			++_finish;
 		}
 
@@ -132,7 +158,6 @@ namespace bit
 			}
 			--_finish;
 			return pos;
-
 		}
 
 	private:

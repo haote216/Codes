@@ -122,39 +122,7 @@ using namespace std;
 //}
 
 
-void TestVector1()
-{
-	bit::Vector<int> v1;
-	v1.PushBack(1);
-	v1.PushBack(2);
-	v1.PushBack(3);
-	v1.PushBack(4);
-	v1.PushBack(5);
-	v1.Insert(v1.begin(), 30);
-	for (const auto& e : v1)
-	{
-		cout << e << endl;
-	}
-	cout << endl;
-
-	bit::Vector<int>::iterator it = v1.begin();
-	while (it != v1.end())
-	{
-		cout << *it << " ";
-		++it;
-	}
-	cout<< endl;
-
-	for (size_t i = 0; i < v1.Size(); ++i)
-	{
-		cout << v1[i] << " ";
-	}
-	cout << endl;
-
-
-}
-
-//void TestVector2()
+//void TestVector4()
 //{
 //	bit::Vector<int> v1;
 //	v1.PushBack(1);
@@ -162,11 +130,78 @@ void TestVector1()
 //	v1.PushBack(3);
 //	v1.PushBack(4);
 //	v1.PushBack(5);
+//	v1.Insert(v1.begin(), 30);
+//	for (const auto& e : v1)
+//	{
+//		cout << e << endl;
+//	}
+//	cout << endl;
+//
+//	bit::Vector<int>::iterator it = v1.begin();
+//	while (it != v1.end())
+//	{
+//		cout << *it << " ";
+//		++it;
+//	}
+//	cout<< endl;
+//
+//	for (size_t i = 0; i < v1.Size(); ++i)
+//	{
+//		cout << v1[i] << " ";
+//	}
+//	cout << endl;
+//
 //
 //}
+
+//void TestVector5()
+//{
+//	bit::Vector<int> v1;
+//	v1.PushBack(1);
+//	v1.PushBack(2);
+//	v1.PushBack(3);
+//	v1.PushBack(4);
+//	v1.PushBack(5);
+//	
+//	auto it = v1.begin();
+//	while (it != v1.end())
+//	{
+//		if (*it % 2 == 0)
+//		{
+//			it = v1.Erase(it);
+//		}
+//		else
+//		{
+//			++it;
+//		}
+//	}
+//
+//	for (size_t i = 0; i < v1.Size(); ++i)
+//	{
+//		cout << v1[i] << " ";
+//	}
+//	cout << endl;
+//}
+void TestVector6()
+{
+	bit::Vector<int> v1;
+	v1.PushBack(1);
+	v1.PushBack(2);
+	v1.PushBack(3);
+	v1.PushBack(4);
+	v1.PushBack(5);
+	v1.Resize(7,4);
+
+	for (const auto& e : v1)
+	{
+		cout << e << " ";
+	}
+	cout << endl;
+}
+
 int main()
 {
-	TestVector1();
+	TestVector6();
 	system("pause");
 	return 0;
 }
