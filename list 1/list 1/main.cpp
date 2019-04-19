@@ -106,29 +106,39 @@ using namespace std;
 
 void test_list3()
 {
-	bit::List<int> l;
-	l.PushBack(1);
-	l.PushBack(2);
-	l.PushBack(3);
-	l.PushBack(4);
-	l.PushBack(5);
+	//bit::List<int> l;
+	//l.PushBack(1);
+	//l.PushBack(2);
+	//l.PushBack(3);
+	//l.PushBack(4);
+	//l.PushBack(5);
 
-	bit::List<int>::iterator it = l.begin();
+	//bit::List<int>::iterator it = l.begin();
+
+	bit::Date d;
+	bit::List<bit::Date> l;
+	l.PushBack(d);
+	l.PushBack(d);
+	l.PushBack(d);
+	l.PushBack(d);
+
+	bit::List<bit::Date>::iterator it = l.begin();
+
 	
 	while (it != l.end())
 	{
-		cout << *it << " ";
+		cout << it ->_year << " ";
 		++it;
 	}
 	cout << endl;
 
-	for (auto e : l)
-	{
-		cout << e << " ";
-	}
-	cout << endl;
+	//for (auto e : l)
+	//{
+	//	cout << e << " ";
+	//}
+	//cout << endl;
 
-	bit::PrintList(l);
+	//bit::PrintList(l);
 }
 
 
