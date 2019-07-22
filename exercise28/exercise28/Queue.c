@@ -34,7 +34,7 @@ QueueNode* BuyQueueNode(DataType x)
 void QueuePush(Queue* pq, DataType x)
 {
 	assert(pq);
-	if (pq->_back)
+	if (pq->_back == NULL)
 	{
 		pq->_back = pq->_front = BuyQueueNode(x);
 	}
