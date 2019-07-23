@@ -5,7 +5,8 @@
 int main()
 {
 	//Test();
-	TestQueueByTwoStack();
+	//TestQueueByTwoStack();
+	TestStackByTwoQueue();
 	system("pause");
 	return 0;
 }

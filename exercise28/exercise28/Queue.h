@@ -24,6 +24,7 @@ QueueNode* BuyQueueNode(DataType x);
 void QueuePush(Queue* pq, DataType x);
 void QueuePop(Queue* pq);
 DataType QueueFront(Queue* pq);
+DataType QueueBack(Queue* pq);
 int QueueEmpty(Queue* pq);
 int QueueSize(Queue* pq);
 void Test();

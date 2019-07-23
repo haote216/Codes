@@ -52,12 +52,23 @@ void QueuePop(Queue* pq)
 	QueueNode* cur = pq->_front->_next;
 	free(pq->_front);
 	pq->_front = cur;
+
+	if (cur == NULL)
+	{
+		pq->_back = NULL;
+	}
 }
 
 DataType QueueFront(Queue* pq)
 {
 	assert(pq);
 	return pq->_front->_data;
+}
+
+DataType QueueBack(Queue* pq)
+{
+	assert(pq);
+	return pq->_back->_data;
 }
 
 int QueueEmpty(Queue* pq)
@@ -67,7 +78,7 @@ int QueueEmpty(Queue* pq)
 }
 int QueueSize(Queue* pq)
 {
-	int size = 0;
+	int size = 1;
 	QueueNode* cur = pq->_front;
 	while (cur != pq->_back)
 	{
