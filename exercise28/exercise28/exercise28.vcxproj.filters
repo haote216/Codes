@@ -27,6 +27,9 @@
     <ClCompile Include="Topic.c">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="maze.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Queue.h">
@@ -36,6 +39,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Topic.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="maze.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

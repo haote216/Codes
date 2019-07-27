@@ -21,7 +21,7 @@ void QueueDestory(Queue* pq)
 	pq->_back = pq->_front = NULL; 
 }
 
-QueueNode* BuyQueueNode(DataType x)
+QueueNode* BuyQueueNode(QUDataType x)
 {
 	QueueNode* node = (QueueNode*)malloc(sizeof(QueueNode));
 	assert(node);
@@ -31,7 +31,7 @@ QueueNode* BuyQueueNode(DataType x)
 	return node;
 }
 
-void QueuePush(Queue* pq, DataType x)
+void QueuePush(Queue* pq, QUDataType x)
 {
 	assert(pq);
 	if (pq->_back == NULL)
@@ -59,13 +59,13 @@ void QueuePop(Queue* pq)
 	}
 }
 
-DataType QueueFront(Queue* pq)
+QUDataType QueueFront(Queue* pq)
 {
 	assert(pq);
 	return pq->_front->_data;
 }
 
-DataType QueueBack(Queue* pq)
+QUDataType QueueBack(Queue* pq)
 {
 	assert(pq);
 	return pq->_back->_data;
@@ -87,23 +87,23 @@ int QueueSize(Queue* pq)
 	}
 	return size;
 }
-void Test()
-{
-	Queue q;
-	QueueInit(&q);
-	QueuePush(&q, 1);
-	QueuePush(&q, 2);
-	QueuePush(&q, 3);
-	QueuePush(&q, 4);
-
-	printf("%d", QueueFront(&q));
-	QueuePop(&q);
-	printf("%d", QueueFront(&q));
-	QueuePop(&q);
-	printf("%d", QueueFront(&q));
-	QueuePop(&q);
-	printf("%d", QueueFront(&q));
-	QueuePop(&q);
-
-	QueueDestory(&q);
-}
+//void Test()
+//{
+//	Queue q;
+//	QueueInit(&q);
+//	QueuePush(&q, 1);
+//	QueuePush(&q, 2);
+//	QueuePush(&q, 3);
+//	QueuePush(&q, 4);
+//
+//	printf("%d", QueueFront(&q));
+//	QueuePop(&q);
+//	printf("%d", QueueFront(&q));
+//	QueuePop(&q);
+//	printf("%d", QueueFront(&q));
+//	QueuePop(&q);
+//	printf("%d", QueueFront(&q));
+//	QueuePop(&q);
+//
+//	QueueDestory(&q);
+//}

@@ -14,9 +14,9 @@ typedef struct QueueByTwoStack
 void QueueByTwoStackInit(QueueByTwoStack* qts);
 void QueueByTwoStackDestory(QueueByTwoStack* qts);
 
-void QueueByTwoStackPush(QueueByTwoStack* qts,DataType x);
+void QueueByTwoStackPush(QueueByTwoStack* qts,STDataType x);
 void QueueByTwoStackPop(QueueByTwoStack* qts);
-DataType QueueByTwoStackFront(QueueByTwoStack* qts);
+STDataType QueueByTwoStackFront(QueueByTwoStack* qts);
 
 int QueueByTwoStackSize(QueueByTwoStack* qts);
 int QueueByTwoStackEmpty(QueueByTwoStack* qts);
@@ -35,9 +35,9 @@ typedef struct StackByTwoQueue
 void StackByTwoQueueInit(StackByTwoQueue* stq);
 void StackByTwoQueueDestory(StackByTwoQueue* stq);
 
-void StackByTwoQueuePush(StackByTwoQueue* stq, DataType x);
+void StackByTwoQueuePush(StackByTwoQueue* stq, QUDataType x);
 void StackByTwoQueuePop(StackByTwoQueue* stq);
-DataType StackByTwoQueueTop(StackByTwoQueue* stq);
+QUDataType StackByTwoQueueTop(StackByTwoQueue* stq);
 
 int StackByTwoQueueSize(StackByTwoQueue* stq);
 int StackByTwoQueueEmpty(StackByTwoQueue* stq);

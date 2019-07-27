@@ -64,12 +64,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="maze.c" />
     <ClCompile Include="Queue.c" />
     <ClCompile Include="Stack.c" />
     <ClCompile Include="test.c" />
     <ClCompile Include="Topic.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="maze.h" />
     <ClInclude Include="Queue.h" />
     <ClInclude Include="Stack.h" />
     <ClInclude Include="Topic.h" />

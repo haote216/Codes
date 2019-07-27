@@ -4,17 +4,24 @@
 #include<malloc.h>
 #include<windows.h>
 
+
+typedef struct Pos  //зјБъ
+{
+	int _row;
+	int _col;
+}Pos;
+
 #define N 10
-typedef char STDatatype;
+typedef Pos STDataType;
 
 typedef struct Stack{
-	STDatatype _array[N];
+	STDataType _array[N];
 	int _top;
 }Stack;
 void StackInit(Stack *s);
 void StackDestory(Stack* s);
-void StackPush(Stack *s, STDatatype data);
+void StackPush(Stack *s, STDataType data);
 void StackPop(Stack *s);
 int StackEmpty(Stack *s);
 int StackSize(Stack *s);
-STDatatype StackTop(Stack *s);
+STDataType StackTop(Stack *s);

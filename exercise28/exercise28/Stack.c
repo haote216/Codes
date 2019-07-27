@@ -10,7 +10,7 @@ void StackDestory(Stack* s)
 	assert(s);
 	s->_top = 0;
 }
-void StackPush(Stack *s, STDatatype data)
+void StackPush(Stack *s, STDataType data)
 {
 	assert(s);
 	if (N == s->_top)
@@ -34,7 +34,7 @@ int StackSize(Stack *s)
 {
 	return s->_top;
 }
-STDatatype StackTop(Stack *s)
+STDataType StackTop(Stack *s)
 {
 	assert(s->_array && s->_top >0);
 	return s->_array[s->_top - 1];

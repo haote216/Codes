@@ -3,12 +3,12 @@
 #include<assert.h>
 #include<malloc.h>
 #include<windows.h>
-typedef int DataType;
+typedef int QUDataType;
 
 typedef struct QueueNode
 {
 	struct QueueNode* _next;
-	DataType _data;
+	QUDataType _data;
 }QueueNode;
 
 
@@ -20,11 +20,11 @@ typedef struct Queue
 
 void QueueInit(Queue* pq);
 void QueueDestory(Queue* pq);
-QueueNode* BuyQueueNode(DataType x);
-void QueuePush(Queue* pq, DataType x);
+QueueNode* BuyQueueNode(QUDataType x);
+void QueuePush(Queue* pq, QUDataType x);
 void QueuePop(Queue* pq);
-DataType QueueFront(Queue* pq);
-DataType QueueBack(Queue* pq);
+QUDataType QueueFront(Queue* pq);
+QUDataType QueueBack(Queue* pq);
 int QueueEmpty(Queue* pq);
 int QueueSize(Queue* pq);
 void Test();

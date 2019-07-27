@@ -12,7 +12,7 @@ void QueueByTwoStackDestory(QueueByTwoStack* qts)
 
 }
 
-void QueueByTwoStackPush(QueueByTwoStack* qts, DataType x)
+void QueueByTwoStackPush(QueueByTwoStack* qts, STDataType x)
 {
 	assert(qts);
 	StackPush(&(qts->s1), x);
@@ -31,7 +31,7 @@ void QueueByTwoStackPop(QueueByTwoStack* qts)
 	StackPop(&qts->s2);
 
 }
-DataType QueueByTwoStackFront(QueueByTwoStack* qts)
+STDataType QueueByTwoStackFront(QueueByTwoStack* qts)
 {
 	if (StackEmpty(&qts->s2) == 0)
 	{
@@ -53,26 +53,26 @@ int QueueByTwoStackEmpty(QueueByTwoStack* qts)
 	return StackEmpty(&qts->s1) | StackEmpty(&qts->s2);
 }
 
-void TestQueueByTwoStack()
-{
-	QueueByTwoStack qts;
-	QueueByTwoStackInit(&qts);
-	QueueByTwoStackPush(&qts, 1);
-	QueueByTwoStackPush(&qts, 2);
-	QueueByTwoStackPush(&qts, 3);
-
-	QueueByTwoStackPop(&qts);
-	QueueByTwoStackPop(&qts);
-
-	QueueByTwoStackPush(&qts, 4);
-	QueueByTwoStackPush(&qts, 5);
-
-	while (QueueByTwoStackEmpty(&qts))
-	{
-		printf("%d\n", QueueByTwoStackFront(&qts));
-		QueueByTwoStackPop(&qts);
-	}
-}
+//void TestQueueByTwoStack()
+//{
+//	QueueByTwoStack qts;
+//	QueueByTwoStackInit(&qts);
+//	QueueByTwoStackPush(&qts, 1);
+//	QueueByTwoStackPush(&qts, 2);
+//	QueueByTwoStackPush(&qts, 3);
+//
+//	QueueByTwoStackPop(&qts);
+//	QueueByTwoStackPop(&qts);
+//
+//	QueueByTwoStackPush(&qts, 4);
+//	QueueByTwoStackPush(&qts, 5);
+//
+//	while (QueueByTwoStackEmpty(&qts))
+//	{
+//		printf("%d\n", QueueByTwoStackFront(&qts));
+//		QueueByTwoStackPop(&qts);
+//	}
+//}
 
 //////////////////////////////////
 //俩个队列实现一个栈
@@ -87,7 +87,7 @@ void StackByTwoQueueDestory(StackByTwoQueue* stq)
 	QueueDestory(&stq->q2);
 }
 
-void StackByTwoQueuePush(StackByTwoQueue* stq, DataType x)
+void StackByTwoQueuePush(StackByTwoQueue* stq, QUDataType x)
 {
 	assert(stq);
 	if (QueueEmpty(&stq->q1) != 0)
@@ -117,7 +117,7 @@ void StackByTwoQueuePop(StackByTwoQueue* stq)
 }
 
 
-DataType StackByTwoQueueTop(StackByTwoQueue* stq)
+QUDataType StackByTwoQueueTop(StackByTwoQueue* stq)
 {
 	assert(stq);
 	if (QueueEmpty(&stq->q1))
@@ -141,22 +141,22 @@ int StackByTwoQueueEmpty(StackByTwoQueue* stq)
 
 
 
-void TestStackByTwoQueue()
-{
-	StackByTwoQueue stq;
-	StackByTwoQueueInit(&stq);
-	StackByTwoQueuePush(&stq, 1);
-	StackByTwoQueuePush(&stq, 2);
-	StackByTwoQueuePush(&stq, 3);
-	StackByTwoQueuePop(&stq);
-	StackByTwoQueuePop(&stq);
-	StackByTwoQueuePush(&stq, 4);
-	StackByTwoQueuePush(&stq, 5);
-
-	while (StackByTwoQueueEmpty(&stq))
-	{
-		printf("%d ", StackByTwoQueueTop(&stq));
-		StackByTwoQueuePop(&stq);
-	}
-	printf("\n");
-}
+//void TestStackByTwoQueue()
+//{
+//	StackByTwoQueue stq;
+//	StackByTwoQueueInit(&stq);
+//	StackByTwoQueuePush(&stq, 1);
+//	StackByTwoQueuePush(&stq, 2);
+//	StackByTwoQueuePush(&stq, 3);
+//	StackByTwoQueuePop(&stq);
+//	StackByTwoQueuePop(&stq);
+//	StackByTwoQueuePush(&stq, 4);
+//	StackByTwoQueuePush(&stq, 5);
+//
+//	while (StackByTwoQueueEmpty(&stq))
+//	{
+//		printf("%d ", StackByTwoQueueTop(&stq));
+//		StackByTwoQueuePop(&stq);
+//	}
+//	printf("\n");
+//}
