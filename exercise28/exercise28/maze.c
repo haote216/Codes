@@ -1,11 +1,11 @@
 #include"maze.h"
 #include"Stack.h"
 
-int CheckAccess(Pos next)
+int CheckAccess(Pos cur,Pos next)
 {
 	if (next._row >= 0 && next._row < N
 		&& next._col >= 0 && next._col < N
-		&& maze[next._col][next._row] == 1)
+		&& (maze[next._row][next._col] == 1  || maze[next._row][next._col] > maze[cur._row][cur._col]+1))
 	{
 		return 1;
 	}
@@ -13,22 +13,33 @@ int CheckAccess(Pos next)
 		return 0;
 }
 
+int pathsize = 0;
+
 int GetMazePath(Pos entry, Pos exit)
 {
 	Stack path;
 	StackInit(&path);
 	StackPush(&path, entry);
+	maze[entry._row][entry._col] = 2;
 
 	while (StackEmpty(&path))
 	{
 		Pos cur = StackTop(&path);
-		maze[cur._col][cur._row] = 2;
-		if (cur._col == exit._col
-			&& cur._row == exit._row)
+		//maze[cur._row][cur._col] = 2;
+		//if (cur._col == exit._col
+		//	&& cur._row == exit._row)
+		if (cur._col == 5)
 		{
 			//出口
-			StackDestory(&path);
-			return 1;
+			
+			//如果只找一条通路，则返回
+			//StackDestory(&path);
+			//return 1;
+
+			if (pathsize == 0  || StackSize(&path) < pathsize)
+			{
+				pathsize = StackSize(&path);
+			}
 		}
 
 		Pos next;
@@ -36,8 +47,9 @@ int GetMazePath(Pos entry, Pos exit)
 		//上
 		next = cur;
 		next._row -= 1;
-		if (CheckAccess(next))
+		if (CheckAccess(cur,next))
 		{
+			maze[next._row][next._col] = maze[cur._row][cur._col] + 1;
 			StackPush(&path, next);
 			continue;
 		}
@@ -45,8 +57,9 @@ int GetMazePath(Pos entry, Pos exit)
 		//下
 		next = cur;
 		next._row += 1;
-		if (CheckAccess(next))
+		if (CheckAccess(cur,next))
 		{
+			maze[next._row][next._col] = maze[cur._row][cur._col] + 1;
 			StackPush(&path, next);
 			continue;
 		}
@@ -54,8 +67,9 @@ int GetMazePath(Pos entry, Pos exit)
 		//左
 		next = cur;
 		next._col -= 1;
-		if (CheckAccess(next))
+		if (CheckAccess(cur,next))
 		{
+			maze[next._row][next._col] = maze[cur._row][cur._col] + 1;
 			StackPush(&path, next);
 			continue;
 		}
@@ -63,12 +77,12 @@ int GetMazePath(Pos entry, Pos exit)
 		//右
 		next = cur;
 		next._col += 1;
-		if (CheckAccess(next))
+		if (CheckAccess(cur,next))
 		{
+			maze[next._row][next._col] = maze[cur._row][cur._col] + 1;
 			StackPush(&path, next);
 			continue;
 		}
-
 
 		StackPop(&path);
 	}
@@ -98,6 +112,7 @@ void TestMaze()
 	exit._row = 4;
 	exit._col = 5;
 	PrintMaze();
-	printf("是否有出口：%d\n", GetMazePath(entry, exit));
+	//printf("是否有出口：%d\n", GetMazePath(entry, exit));
+	printf("最短路径：%d\n", pathsize);
 	PrintMaze();
 }
