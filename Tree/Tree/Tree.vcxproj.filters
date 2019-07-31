@@ -24,6 +24,9 @@
     <ClInclude Include="..\..\exercise28\exercise28\Stack.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Heap.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BinaryTree.c">
@@ -36,6 +39,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="..\..\exercise28\exercise28\Stack.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Heap.c">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

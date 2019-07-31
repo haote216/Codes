@@ -272,7 +272,7 @@ void BinaryTreePostOrderNonR(BTNode* root)
 
 void TestBinaryTree()
 {
-	char array[] = { 'A', 'B', 'C', 'D', 'E', '#', '#', '#', '#', '#', '#' };
+	char array[] = { 'A', 'B', 'D', '#', '#','#', 'C' ,'E','#','#','F'};
 	size_t i = 0;
 	BTNode* tree = BinaryTreeCreate(array, sizeof(array) / sizeof(BTDataType), &i);
 	BinaryTreePrevOrder(tree);

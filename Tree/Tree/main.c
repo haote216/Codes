@@ -2,7 +2,8 @@
 
 int main()
 {
-	TestBinaryTree();
+	//TestBinaryTree();
+	TestHeap();
 	system("pause");
 	return 0;
 }

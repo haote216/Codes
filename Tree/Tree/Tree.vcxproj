@@ -66,11 +66,13 @@
   <ItemGroup>
     <ClInclude Include="..\..\exercise28\exercise28\Stack.h" />
     <ClInclude Include="BinaryTree.h" />
+    <ClInclude Include="Heap.h" />
     <ClInclude Include="Queue.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\exercise28\exercise28\Stack.c" />
     <ClCompile Include="BinaryTree.c" />
+    <ClCompile Include="Heap.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="Queue.c" />
   </ItemGroup>
