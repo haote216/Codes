@@ -64,17 +64,27 @@ int BSTreeRemove(BSTreeNode** tree, BSTDataType x)
 			//¿ªÊ¼É¾³ý
 			if (cur->_left == NULL)
 			{
-				if (cur == parent->_left)
-					parent->_left = cur->_right;
+				if (parent == NULL)
+					*tree = cur->_right;
 				else
-					parent->_right = cur->_right;
+				{
+					if (cur == parent->_left)
+						parent->_left = cur->_right;
+					else
+						parent->_right = cur->_right;
+				}
 			}
 			else if (cur->_right == NULL)
 			{
-				if (cur == parent->_left)
-					parent->_left = cur->_left;
+				if (parent == NULL)
+					*tree = cur->_left;
 				else
-					parent->_right = cur->_left;
+				{
+					if (cur == parent->_left)
+						parent->_left = cur->_left;
+					else
+						parent->_right = cur->_left;
+				}
 			}
 			else
 			{
@@ -86,6 +96,7 @@ int BSTreeRemove(BSTreeNode** tree, BSTDataType x)
 				cur->_data = replace->_data;
 				return BSTreeRemove(&cur->_right, replace->_data);		
 			}
+			free(cur);
 			return 1;
 		}	
 	}
@@ -107,6 +118,69 @@ BSTreeNode* BSTreeFind(BSTreeNode** tree, BSTDataType x)
 	}
 }
 
+
+
+int BSTreeInsertR(BSTreeNode** tree, BSTDataType x)
+{
+	if (*tree == NULL)
+	{
+		*tree = BuyBSTreeNode(x);
+		return 1;
+	}
+	if ((*tree)->_data > x)
+		return BSTreeInsertR(&(*tree)->_left, x);
+	else if ((*tree)->_data < x)
+		return BSTreeInsertR(&(*tree)->_right, x);
+	else
+		return 0;
+}
+
+int BSTreeRemoveR(BSTreeNode** tree, BSTDataType x)
+{
+	if (*tree == NULL)
+		return -1;
+	if ((*tree)->_data > x)
+		return BSTreeRemoveR(&(*tree)->_left, x);
+	else if ((*tree)->_data < x)
+		return BSTreeRemoveR(&(*tree)->_right, x);
+	else
+	{
+		BSTreeNode* del = *tree;
+		if ((*tree)->_left == NULL)
+		{
+			*tree = (*tree)->_right;
+			free(del);
+		}
+		else if ((*tree)->_right == NULL)
+		{
+			*tree = (*tree)->_left;
+			free(del);
+		}	
+		else
+		{
+			BSTreeNode* replace = (*tree)->_right;
+			while (replace->_left)
+			{
+				replace = replace->_left;
+			}
+			(*tree)->_data = replace->_data;
+			return BSTreeRemoveR(&(*tree)->_right, replace->_data);
+		}
+	}
+	return 1;
+}
+BSTreeNode* BSTreeFindR(BSTreeNode** tree, BSTDataType x)
+{
+	if (*tree == NULL)
+		return NULL;
+	if ((*tree)->_data > x)
+		return BSTreeFindR(&(*tree)->_left, x);
+	else if ((*tree)->_data < x)
+		return BSTreeFindR(&(*tree)->_right, x);
+	else
+		return *tree;
+}
+
 void BSTreeInOrder(BSTreeNode** tree)
 {
 	if (*tree == NULL)
@@ -123,25 +197,22 @@ void TestBSTree()
 	int a[] = {5, 3, 4, 1, 7, 8, 2, 6, 0, 9 };
 	for (int i = 0; i < sizeof(a) / sizeof(int); ++i)
 	{
-		BSTreeInsert(&tree, a[i]);
+		BSTreeInsertR(&tree, a[i]);
 	}
 	BSTreeInOrder(&tree);
 	printf("\n");
-	BSTreeRemove(&tree, 5);
-	BSTreeRemove(&tree, 2);
-	BSTreeRemove(&tree, 8);
-	BSTreeRemove(&tree, 1);
 
-	BSTreeRemove(&tree, 1);
-	BSTreeRemove(&tree, 2);
-	BSTreeRemove(&tree, 3);
-	BSTreeRemove(&tree, 4);
-	BSTreeRemove(&tree, 5);
-	BSTreeRemove(&tree, 6);
-	BSTreeRemove(&tree, 7);
-	BSTreeRemove(&tree, 8);
-	BSTreeRemove(&tree, 9);
-	BSTreeRemove(&tree, 10);
-	BSTreeRemove(&tree, 11);
+
+	BSTreeRemoveR(&tree, 0);
+	BSTreeRemoveR(&tree, 1);
+	BSTreeRemoveR(&tree, 2);
+	BSTreeRemoveR(&tree, 3);
+	BSTreeRemoveR(&tree, 4);
+	BSTreeRemoveR(&tree, 5);
+	BSTreeRemoveR(&tree, 6);
+	BSTreeRemoveR(&tree, 7);
+	BSTreeRemoveR(&tree, 8);
+	BSTreeRemoveR(&tree, 9);
+
 	BSTreeInOrder(&tree);
 }
