@@ -18,12 +18,18 @@
     <ClInclude Include="BinartSearchTree.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="HashTable.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BinarySearchTree.c">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Main.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="HashTable.c">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
